@@ -33,34 +33,37 @@ public class BuscaMinas {
             for (int j = 0; j < mtx[i].length(); j++) {
                 if (mtx[i].charAt(j) != start)
                 {
-                    if (i > 0 && j > 0)
+                    if (i != 0 && j != 0)
                         if (mtx[i - 1].charAt(j - 1) == start)
                             aux++; 
-                    if (i > 0 && j < mtx[i].length())
+                    if (i > 0)
                         if (mtx[i - 1].charAt(j) == start)
                             aux++;
-                    if (i > 0)
+                    if (i > 0  && j < mtx[i].length() - 1)
                         if (mtx[i - 1].charAt(j + 1) == start)
                             aux++;
                     if (j > 0)
                         if (mtx[i].charAt(j - 1) == start)
                             aux++; 
-                    if (j < mtx[i].length())
+                    if (j < mtx[i].length() - 1)
                         if (mtx[i].charAt(j + 1) == start)
                             aux++;
-                    if (i < mtx[i].length() && j > 0)
+                    if (i < mtx[i].length() - 1 && j > 0)
                         if (mtx[i + 1].charAt(j - 1) == start)
                             aux++;
-                    if (i < mtx[i].length())
+                    if (i < mtx[i].length() - 1)
                         if (mtx[i + 1].charAt(j) == start)
                             aux++; 
-                    if (i < mtx[i].length() && j < mtx[i].length())
+                    if (i < mtx[i].length() - 1 && j < mtx[i].length() - 1)
                         if (mtx[i + 1].charAt(j + 1) == start)
                              aux++;
-                    System.out.println(i + " " + j + " = "+ aux);
+                    System.out.print(aux);
                     aux = 0;
                 }
+                else
+                    System.out.print("*");
             }
+            System.out.print("\n");
         }
     }
     
