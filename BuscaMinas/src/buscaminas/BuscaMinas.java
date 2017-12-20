@@ -20,103 +20,19 @@ import java.util.Scanner;
 
 public class BuscaMinas {
 
-    /**
-     * @param mtx
-     * @return 
-     */
-    
-    public static void solve(String[]mtx)
-    {
-        int aux = 0;
-        char start = '*';
-        for (int i = 0; i < mtx.length; i++) {
-            for (int j = 0; j < mtx[i].length(); j++) {
-                if (mtx[i].charAt(j) != start)
-                {
-                    if (i != 0 && j != 0)
-                        if (mtx[i - 1].charAt(j - 1) == start)
-                            aux++; 
-                    if (i > 0)
-                        if (mtx[i - 1].charAt(j) == start)
-                            aux++;
-                    if (i > 0  && j < mtx[i].length() - 1)
-                        if (mtx[i - 1].charAt(j + 1) == start)
-                            aux++;
-                    if (j > 0)
-                        if (mtx[i].charAt(j - 1) == start)
-                            aux++; 
-                    if (j < mtx[i].length() - 1)
-                        if (mtx[i].charAt(j + 1) == start)
-                            aux++;
-                    if (i < mtx[i].length() - 1 && j > 0)
-                        if (mtx[i + 1].charAt(j - 1) == start)
-                            aux++;
-                    if (i < mtx[i].length() - 1)
-                        if (mtx[i + 1].charAt(j) == start)
-                            aux++; 
-                    if (i < mtx[i].length() - 1 && j < mtx[i].length() - 1)
-                        if (mtx[i + 1].charAt(j + 1) == start)
-                             aux++;
-                    System.out.print(aux);
-                    aux = 0;
-                }
-                else
-                    System.out.print("*");
-            }
-            System.out.print("\n");
-        }
-    }
-    
-    public static int read_lenght()
-    {
-        int i = 0;
-        java.io.File file = new java.io.File("ejemplo.txt");
-        try {
-            Scanner input = new Scanner(file);
-            while (input.hasNext())
-            {
-                String num = input.nextLine();
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            System.err.format("Archivo no existente...");
-        }
-        return i;
-    }
-    
-    public static String[] get_map(int length)
-    {
-        int i = 0;
-        int j = 0;
-        String[] mtx = new String[length - 1];
-        java.io.File file = new java.io.File("ejemplo.txt");
-        try {
-            Scanner input = new Scanner(file);
-            while (input.hasNext()){
-                String num = input.nextLine();
-                if (i == 1)
-                {
-                    mtx[j] = num;
-                    j++;
-                }    
-                i = 1;
-            }
-        } catch (FileNotFoundException e) {
-            System.err.format("Archivo no existente...");
-        }
-        return mtx;
-    }
+   
     
     public static void main(String[] args)
     {
         int length;
         String[] mtx;
-
-        length = read_lenght();
-        mtx = get_map(length);
-        solve(mtx);
-        //System.out.println(Arrays.toString(mtx));
-        // TODO code application logic here
+        String[] res;
+        Minas min = new Minas();
+        res = min.StartMinas("ejemplo1.txt");
+        
+//        System.out.println();
+//        System.out.println();
+        System.out.println(Arrays.toString(res));
     }
     
 }
